@@ -12,6 +12,7 @@ resource "aws_launch_template" "this" {
     wp_username       = aws_db_instance.web.username
     wp_user_password  = aws_db_instance.web.password
     wp_db_host        = aws_db_instance.web.address 
+    efs_id            = "${aws_efs_file_system.efs.id}"
   }))
     
   network_interfaces {

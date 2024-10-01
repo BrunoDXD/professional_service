@@ -2,6 +2,9 @@
               #Atualiza os pacotes
               sudo apt update && sudo apt upgrade
                
+              #comando de configuração do EFS
+              
+
               #Traz os arquivos de configuração do S3
               cd /tmp
               wget https://s3.amazonaws.com/ansible.wordpress/install_docker.sh
