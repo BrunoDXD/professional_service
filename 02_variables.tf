@@ -26,7 +26,7 @@ variable "key_aws_instance" {
 
 #-----------------------Variaveis do Grupo de Segurança-------------------
 
-#Nome do grupo de segurança
+#Nome do grupo de segurança EC2
 variable "name_security_group" {
   default = "allow_ssh"
 }
@@ -45,11 +45,6 @@ variable "db_name" {
   default = "mydb"
 }
 
-#Modelo do database
-variable "db_engine" {
-  default = "mysql"
-}
-
 #versão do database
 variable "db_version" {
   default = "5.7"
@@ -58,16 +53,6 @@ variable "db_version" {
 #classe da instancia do database
 variable "db_instance_class" {
   default = "db.m5.large"
-}
-
-#Nome de usuario 
-variable "db_username" {
-  default = "foo"
-}
-
-#senha do usuario
-variable "user_password" {
-  default = "foobarbaz"
 }
 
 #--------------------Variaveis da VPC------------------------

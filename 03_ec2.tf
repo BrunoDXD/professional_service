@@ -6,7 +6,7 @@ resource "aws_launch_template" "this" {
     key_name                    = var.key_aws_instance
 
   user_data = base64encode(
-  templatefile("ec2_setup.sh", 
+  templatefile("userdata/ec2_setup.sh", 
   {
     wp_db_name        = aws_db_instance.web.name
     wp_username       = aws_db_instance.web.username
@@ -41,7 +41,7 @@ resource "aws_instance" "private_instance" {
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   key_name               = var.key_aws_instance
   user_data = base64encode(
-  templatefile("HelloWorld.sh",{}))
+  templatefile("userdata/HelloWorld.sh",{}))
   monitoring             = true
   subnet_id              = aws_subnet.this["pvt_b"].id
   associate_public_ip_address = true
@@ -59,7 +59,7 @@ resource "aws_instance" "vpn-server" {
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   key_name               = var.key_aws_instance
   user_data = base64encode(
-  templatefile("vpn-server.sh",{}))
+  templatefile("userdata/vpn-server.sh",{}))
   monitoring             = true
   subnet_id              = aws_subnet.this["pub_b"].id
   associate_public_ip_address = true

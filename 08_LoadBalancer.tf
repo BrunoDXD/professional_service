@@ -22,6 +22,15 @@ resource "aws_lb_listener" "this" {
    port     = 80
    protocol = "HTTP"
    vpc_id   = aws_vpc.this.id
+
+   health_check {
+    path                = "/"
+    port                = 80
+    protocol            = "HTTP"
+    healthy_threshold   = 3
+    unhealthy_threshold = 3
+    matcher             = "200-499"
+  }
  }
 
 resource "aws_autoscaling_attachment" "this" {
