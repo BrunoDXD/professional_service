@@ -24,7 +24,7 @@ variable "key_aws_instance" {
   default = "wordpress"
 }
 
-#-----------------------Variaveis do Grupo de Segurança-------------------
+#-----------------------Variaveis do Grupo de Segurança EC2-------------------
 
 #Nome do grupo de segurança EC2
 variable "name_security_group" {
@@ -35,8 +35,6 @@ variable "name_security_group" {
 variable "ip_from_ssh" {
   default = "0.0.0.0/0"
 }
-
-
 
 #----------------------variaveis do RDS------------------------
 
@@ -81,3 +79,11 @@ variable "subnet_private_2_cidr" {
   default = "172.32.48.0/24"
 }
 
+#--------------------Variaveis do Cloud Watch------------------------
+variable "protocolo" {
+  default = "email"
+}
+
+variable "email" {
+  default = "bruno.silva@elven.works"
+}
