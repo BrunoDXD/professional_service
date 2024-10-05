@@ -9,7 +9,7 @@
   engine_version       = var.db_version
   instance_class       = var.db_instance_class
   db_name              = var.db_name
-  username             = "bruno"
+  username             = "defaultuser"
   password             = data.aws_secretsmanager_secret_version.db_password_version.secret_string
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true

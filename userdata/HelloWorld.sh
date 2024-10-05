@@ -3,7 +3,9 @@
               sudo apt update && sudo apt upgrade
                
               #comando de configuração do EFS
-              
+              mkdir /efs
+              efs_id="${efs_id}"
+              mount -t efs $efs_id:/ /efs
 
               #Traz os arquivos de configuração do S3
               cd /tmp

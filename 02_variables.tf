@@ -1,12 +1,20 @@
+#-----------------------Variaveis Principais-------------------
+#Caminho onde será criado o par de chaves
+variable "caminho" {
+  default = "/mnt/c/Users/Bruno/Desktop/"
+}
+
+
+
+
+
+
+
+
 #-----------------------Variaveis da instancia-------------------
 #Regiao AWS
 variable "region" {
   default =  "us-east-1"
-}
-
-#Usuario AWS
-variable "profile" {
-  default = "bruno.silva"
 }
 
 #AMI provisionada
@@ -17,11 +25,6 @@ variable "ami_aws_instance" {
 #Tipo da VM
 variable "type_aws_instance" {
   default = "t2.micro"
-}
-
-#Chave para acesso
-variable "key_aws_instance" {
-  default = "wordpress"
 }
 
 #-----------------------Variaveis do Grupo de Segurança EC2-------------------
