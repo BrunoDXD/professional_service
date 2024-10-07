@@ -4,13 +4,6 @@ variable "caminho" {
   default = "/mnt/c/Users/Bruno/Desktop/"
 }
 
-
-
-
-
-
-
-
 #-----------------------Variaveis da instancia-------------------
 #Regiao AWS
 variable "region" {

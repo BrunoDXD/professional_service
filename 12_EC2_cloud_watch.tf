@@ -48,7 +48,7 @@ resource "aws_sns_topic_subscription" "email_subscription_pvt" {
 resource "aws_cloudwatch_metric_alarm" "ec2_availability_pvt" {
   alarm_name                = "Disponibilidade EC2 Privada"
   comparison_operator       = "GreaterThanThreshold"
-  evaluation_periods        = 2
+  evaluation_periods        = 1
   metric_name               = "StatusCheckFailed"
   namespace                 = "AWS/EC2"
   period                    = 300
@@ -81,7 +81,7 @@ resource "aws_sns_topic_subscription" "email_subscription_d" {
 resource "aws_cloudwatch_metric_alarm" "ec2_availability" {
   alarm_name                = "Disponibilidade EC2 VPN"
   comparison_operator       = "GreaterThanThreshold"
-  evaluation_periods        = 2
+  evaluation_periods        = 1
   metric_name               = "StatusCheckFailed"
   namespace                 = "AWS/EC2"
   period                    = 300
