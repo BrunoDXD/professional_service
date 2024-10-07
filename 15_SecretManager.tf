@@ -4,7 +4,7 @@ resource "random_password" "password" {
 }
 
 resource "aws_secretsmanager_secret" "db_password" {
-  name = "dev/mysql/passwordd"
+  name = "dev/mysql/passworddb"
 }
 
 resource "aws_secretsmanager_secret_version" "db_password_version" {
@@ -13,7 +13,7 @@ resource "aws_secretsmanager_secret_version" "db_password_version" {
 }
 
 data "aws_secretsmanager_secret" "db_password" {
-  name = "dev/mysql/passwordd"
+  name = "dev/mysql/passworddb"
   depends_on = [
     aws_secretsmanager_secret.db_password
   ]

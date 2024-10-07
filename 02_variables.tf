@@ -1,7 +1,7 @@
 #-----------------------Variaveis Principais-------------------
 #Caminho onde será criado o par de chaves
 variable "caminho" {
-  default = "/mnt/c/Users/Bruno/Desktop/"
+  default = "/mnt/c/Users/Bruno/Documents/Minha_pasta/Professional_service"
 }
 
 #-----------------------Variaveis da instancia-------------------
