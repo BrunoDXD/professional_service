@@ -1,4 +1,4 @@
-#----------------------------Métrica de CPU para EC2 Privada------------------------------------
+#----------------------------Métrica de CPU para EC2 Privada-------------------------------------
 # Define o nome do SNS
 resource "aws_sns_topic" "ec2_cpu_sns" {
   name = "ec2-cpu-utilization-alerts"

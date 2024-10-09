@@ -14,6 +14,6 @@ resource "local_file" "public_key" {
 }
 
 resource "aws_key_pair" "this" {
-  key_name   = "chave"
+  key_name   = "private_key"
   public_key = tls_private_key.this.public_key_openssh
 }

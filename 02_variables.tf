@@ -1,7 +1,7 @@
 #-----------------------Variaveis Principais-------------------
 #Caminho onde será criado o par de chaves
 variable "caminho" {
-  default = "/mnt/c/Users/Bruno/Documents/Minha_pasta/Professional_service"
+  default = "caminho da pasta do clone/professional_service/"
 }
 
 #-----------------------Variaveis da instancia-------------------
@@ -18,18 +18,6 @@ variable "ami_aws_instance" {
 #Tipo da VM
 variable "type_aws_instance" {
   default = "t2.micro"
-}
-
-#-----------------------Variaveis do Grupo de Segurança EC2-------------------
-
-#Nome do grupo de segurança EC2
-variable "name_security_group" {
-  default = "allow_ssh"
-}
-
-#IP para acessar a maquina via SSH
-variable "ip_from_ssh" {
-  default = "0.0.0.0/0"
 }
 
 #----------------------variaveis do RDS------------------------
@@ -81,5 +69,5 @@ variable "protocolo" {
 }
 
 variable "email" {
-  default = "bruno.silva@elven.works"
+  default = "seuEmail@exemplo.com"
 }

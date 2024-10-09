@@ -1,6 +1,3 @@
-
-
-
 #Criação do RDS 
  resource "aws_db_instance" "web" {
   allocated_storage    = 10

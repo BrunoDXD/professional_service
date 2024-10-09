@@ -1,4 +1,4 @@
-#----------------------------Métrica de Uso de Memória para Memcached------------------------------------
+#----------------------------Métrica de Uso de Memória para Memcached-------------------------------------
 # Define o nome do SNS
 resource "aws_sns_topic" "memcached_memory_usage_sns" {
   name = "memcached-memory-usage-alerts"

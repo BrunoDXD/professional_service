@@ -70,7 +70,7 @@ resource "aws_eip" "this" {
 
 resource "aws_nat_gateway" "this" {
   allocation_id = aws_eip.this.id
-  subnet_id     = aws_subnet.this["pub_a"].id
+  subnet_id     = aws_subnet.this["pub_b"].id
   depends_on    = [aws_internet_gateway.this]
 
   tags = merge(local.common_tags, {
@@ -78,7 +78,8 @@ resource "aws_nat_gateway" "this" {
   })
 }
 
-# Criação da Tabela de rotas das subnets privadas com NTG
+
+# Criação da Tabela de rotas das subnets privadas 
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.this.id
   route {

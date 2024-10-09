@@ -15,7 +15,7 @@ resource "aws_elasticache_cluster" "cache_cluster" {
   az_mode              = "single-az"
   port                 = 11211
   network_type         = "ipv4"
-  security_group_ids   = [aws_security_group.allow_ssh.id]
+  security_group_ids   = [aws_security_group.sg_wordpress.id]
   subnet_group_name    = aws_elasticache_subnet_group.this.name
   apply_immediately    = true
 

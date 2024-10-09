@@ -2,7 +2,7 @@ resource "aws_lb" "this" {
   name               = "lb-wordpress"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.allow_ssh.id]
+  security_groups    = [aws_security_group.sg_wordpress.id]
   subnets            = [aws_subnet.this["pub_a"].id, aws_subnet.this["pub_b"].id]
 }
 

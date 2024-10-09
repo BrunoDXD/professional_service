@@ -1,3 +1,4 @@
+#Crio o grupo de Autoscaling e atribuo o template
 resource "aws_autoscaling_group" "this" {
   vpc_zone_identifier = [aws_subnet.this["pub_a"].id, aws_subnet.this["pub_b"].id]
   desired_capacity   = 2
@@ -10,6 +11,7 @@ resource "aws_autoscaling_group" "this" {
   }
 }
 
+#Políca do Autoscaling
 resource "aws_autoscaling_policy" "thisPolicy" {
     name                   = "politica-cpu"
     adjustment_type        = "ChangeInCapacity"
@@ -18,6 +20,7 @@ resource "aws_autoscaling_policy" "thisPolicy" {
     autoscaling_group_name = aws_autoscaling_group.this.name
 }
 
+#Métrica de CPU que aciona a política
 resource "aws_cloudwatch_metric_alarm" "this" {
   alarm_name          = "Alarme-de-CPU"
   comparison_operator = "GreaterThanOrEqualToThreshold"

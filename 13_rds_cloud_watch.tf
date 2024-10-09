@@ -32,7 +32,7 @@ resource "aws_cloudwatch_metric_alarm" "rds_bb" {
 }
 
 
-#----------------------------Mètrica de CPU------------------------------------
+#----------------------------Mètrica de CPU-------------------------------------
 #Define o nome do SNS
 resource "aws_sns_topic" "rds_cpu_sns" {
   name = "rds-cpu-utilization-alerts"

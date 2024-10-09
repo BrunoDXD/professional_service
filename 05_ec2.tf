@@ -18,7 +18,7 @@ resource "aws_launch_template" "this" {
   network_interfaces {
     associate_public_ip_address = true
     delete_on_termination       = true
-    security_groups             = [aws_security_group.allow_ssh.id]
+    security_groups             = [aws_security_group.sg_wordpress.id]
   }
 
   monitoring { 
@@ -38,15 +38,15 @@ resource "aws_launch_template" "this" {
 resource "aws_instance" "private_instance" {
   ami                    = var.ami_aws_instance
   instance_type          = var.type_aws_instance
-  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+  vpc_security_group_ids = [aws_security_group.sg_pvt.id]
   key_name               = aws_key_pair.this.key_name
   user_data = base64encode(
   templatefile("userdata/HelloWorld.sh",{
-    efs_id            = "${aws_efs_file_system.efs.id}"
+    efs_dns_name      = "${aws_efs_file_system.efs.dns_name}"
   }))
   monitoring             = true
   subnet_id              = aws_subnet.this["pvt_b"].id
-  associate_public_ip_address = true
+  associate_public_ip_address = false
   
 
   tags = {
@@ -58,11 +58,11 @@ resource "aws_instance" "private_instance" {
 resource "aws_instance" "vpn_server" {
   ami                    = var.ami_aws_instance
   instance_type          = var.type_aws_instance
-  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+  vpc_security_group_ids = [aws_security_group.sg_vpn.id]
   key_name               = aws_key_pair.this.key_name
   user_data = base64encode(
   templatefile("userdata/vpn-server.sh",{
-    efs_id            = "${aws_efs_file_system.efs.id}"
+    efs_dns_name      = "${aws_efs_file_system.efs.dns_name}"
   }))
   monitoring             = true
   subnet_id              = aws_subnet.this["pub_b"].id
