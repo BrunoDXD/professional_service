@@ -15,7 +15,7 @@ resource "aws_autoscaling_group" "this" {
 resource "aws_autoscaling_policy" "thisPolicy" {
     name                   = "politica-cpu"
     adjustment_type        = "ChangeInCapacity"
-    scaling_adjustment     = 4
+    scaling_adjustment     = 1
     cooldown               = 120
     autoscaling_group_name = aws_autoscaling_group.this.name
 }
