@@ -6,7 +6,7 @@ resource "random_password" "password" {
 
 #Criação do Secret Manager
 resource "aws_secretsmanager_secret" "db_password" {
-  name = "dev/mysql/passworddb"
+  name = "dev/mysql/password_db"
 }
 
 resource "aws_secretsmanager_secret_version" "db_password_version" {
@@ -16,7 +16,7 @@ resource "aws_secretsmanager_secret_version" "db_password_version" {
 
 #Traz as informações do Secret Manager
 data "aws_secretsmanager_secret" "db_password" {
-  name = "dev/mysql/passworddb"
+  name = "dev/mysql/password_db"
   depends_on = [
     aws_secretsmanager_secret.db_password
   ]

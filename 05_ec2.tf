@@ -41,9 +41,7 @@ resource "aws_instance" "private_instance" {
   vpc_security_group_ids = [aws_security_group.sg_pvt.id]
   key_name               = aws_key_pair.this.key_name
   user_data = base64encode(
-  templatefile("userdata/HelloWorld.sh",{
-    efs_dns_name      = "${aws_efs_file_system.efs.dns_name}"
-  }))
+  templatefile("userdata/HelloWorld.sh",{}))
   monitoring             = true
   subnet_id              = aws_subnet.this["pvt_b"].id
   associate_public_ip_address = false
@@ -61,9 +59,7 @@ resource "aws_instance" "vpn_server" {
   vpc_security_group_ids = [aws_security_group.sg_vpn.id]
   key_name               = aws_key_pair.this.key_name
   user_data = base64encode(
-  templatefile("userdata/vpn-server.sh",{
-    efs_dns_name      = "${aws_efs_file_system.efs.dns_name}"
-  }))
+  templatefile("userdata/vpn-server.sh",{}))
   monitoring             = true
   subnet_id              = aws_subnet.this["pub_b"].id
   associate_public_ip_address = true

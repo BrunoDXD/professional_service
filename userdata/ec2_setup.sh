@@ -2,12 +2,6 @@
             #Atualiza os pacotes
               sudo apt update && sudo apt upgrade 
               sudo su -
-              
-            #ponto de montagem efs compartilhado em todas as maquinas
-            sudo apt-get install -y nfs-common
-              mkdir /efs
-              efs_dns_name="${efs_dns_name}"
-              mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $efs_dns_name:/ /efs
 
             #Subindo Wordpress com Ansible  
               cd /tmp

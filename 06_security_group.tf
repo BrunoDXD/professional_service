@@ -10,7 +10,7 @@ resource "aws_security_group" "sg_wordpress" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    cidr_blocks      = [local.my_ip]
   }
 
     ingress {
@@ -61,7 +61,7 @@ resource "aws_security_group" "sg_vpn" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    cidr_blocks      = [local.my_ip]
   }
 
   ingress {
@@ -69,15 +69,7 @@ resource "aws_security_group" "sg_vpn" {
     from_port        = 443
     to_port          = 443
     protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    description      = "EFS"
-    from_port        = 2049
-    to_port          = 2049
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    cidr_blocks      = [local.my_ip]
   }
 
   ingress {
@@ -108,27 +100,11 @@ resource "aws_security_group" "sg_pvt" {
   vpc_id      = aws_vpc.this.id
 
   ingress {
-    description      = "SSH"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
-  }
-
-  ingress {
     description      = "PVT_Instance"
     from_port        = 8080
     to_port          = 8080
     protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    description      = "EFS"
-    from_port        = 2049
-    to_port          = 2049
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    cidr_blocks      = ["172.32.16.0/24"]
   }
 
   egress {
@@ -154,10 +130,12 @@ resource "aws_security_group" "db" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["172.32.0.0/16"]
   }
 
   tags = merge(local.common_tags, {
     Name = "RDS"
   })
 }  
+
+

@@ -11,7 +11,7 @@ resource "aws_autoscaling_group" "this" {
   }
 }
 
-#Políca do Autoscaling
+#Política do Autoscaling
 resource "aws_autoscaling_policy" "thisPolicy" {
     name                   = "politica-cpu"
     adjustment_type        = "ChangeInCapacity"
