@@ -1,6 +1,7 @@
 #!/bin/bash
             #Atualiza os pacotes
               sudo apt update && sudo apt upgrade 
+              sudo apt-get install nfs-common -y
               sudo su -
 
             #Subindo Wordpress com Ansible  

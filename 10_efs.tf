@@ -10,7 +10,7 @@ resource "aws_efs_file_system" "efs" {
 resource "aws_efs_mount_target" "efs" {
   file_system_id  = aws_efs_file_system.efs.id
   subnet_id       = aws_subnet.this["pvt_b"].id
- security_groups = [aws_security_group.sg_wordpress.id, aws_security_group.sg_vpn.id, aws_security_group.sg_pvt.id]
+ security_groups = [aws_security_group.sg_wordpress.id]
 
   depends_on = [
     aws_efs_file_system.efs,
